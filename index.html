@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="Assets/style.css" />
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row" id="heading">
+            <h1>Weather Buddy</h1> 
+        </div>
+        <div class="row" id="heading">
+            <div class="col homedata" id="rightNow"></div>
+            <div class="col homedata" id="today"></div>
+            <div class="col homedata" id="location">current loaction</div>
+        </div>
+        <div class="row">
+          <div class="col-3" id="searchPanel">
+            <form class="area">
+                <input
+                  type="text"
+                  name="cityName"
+                  id="cityName"
+                  placeholder="City name"
+                />
+                <button
+                  type="submit"
+                  class="searchCity"
+                  id="searchCity"
+                  onclick="searchCity(event)"
+                  disabled
+                >
+                  Search
+                </button>
+              </form>
+              <section class="area" id="previous">Previous Searches
+                <button type="button" class="previousCity previousA" id="">Click Me!</button>
+                <button type="button" class="previousCity previousB" id="">Click Me!</button>
+                <button type="button" class="previousCity previousC" id="">Click Me!</button>
+                <button type="button" class="previousCity previousD" id="">Click Me!</button>
+                <button type="button" class="previousCity previousC" id="">Click Me!</button>
+                <button type="button" class="previousCity previousB" id="">Click Me!</button>
+                <button type="button" class="previousCity previousA" id="">Click Me!</button>
+                <button type="button" class="previousCity previousB" id="">Click Me!</button>
+                <button type="button" class="previousCity previousC" id="">Click Me!</button>
+                <button type="button" class="previousCity previousD" id="">Click Me!</button>
+              </section>
+          </div>
+          <div class="col-6" id="resultsPanel">
+            Results panel
+          </div>
+          <div class="col-3" id="wildcardPanel">
+            Wildcard panel
+            <button type="button" class="wildcard tropical" id="">Show me an island in the tropics!</button>
+            <button type="button" class="wildcard mountain" id="">Show me somewhere in the mountains!</button>
+            <button type="button" class="wildcard desert" id="">Show me somewhere in a desert!</button>
+            <button type="button" class="wildcard polar" id="">Show me somewhere near the poles!</button>
+          </div>
+        </div>
+      </div>
+      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+      <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
+      <script src="script.js"></script>
+      </body>
+</html>

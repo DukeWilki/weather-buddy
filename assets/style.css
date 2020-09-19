@@ -1,0 +1,81 @@
+#heading {
+  background-color: chocolate;
+  justify-content: center;
+}
+
+.homedata {
+  justify-content: center;
+}
+
+#rightNow {
+  text-align: left;
+}
+
+#today {
+  text-align: center;
+}
+
+#location {
+  text-align: right;
+}
+
+#searchPanel {
+  background-color: aquamarine;
+}
+
+.previousCity {
+  border: none;
+  margin: 5px;
+  color: cornsilk;
+}
+
+.previousA {
+  background-color: #2b039b;
+}
+
+.previousB {
+  background-color: #9b4703;
+}
+
+.previousC {
+  background-color: #9b0303;
+}
+
+.previousD {
+  background-color: #9b037a;
+}
+
+#resultsPanel {
+  background-color: burlywood;
+}
+
+#wildcardPanel {
+  background-color: aquamarine;
+}
+
+.wildcard {
+    border: none;
+    margin: 5px;
+    color: cornsilk;
+    height: 100px;
+    width: 250px;
+    /* -webkit-text-stroke: 1px blue; */
+}
+
+.tropical{
+    background-image: url(./island.JPG)
+}
+.mountain{
+    background-image: url(./mountain.JPG)
+}
+.desert{
+    background-image: url(./desert.JPG)
+}
+
+.polar{
+    background-image: url(./polar.JPG)
+}
+
+.area {
+  padding-top: 10px;
+}
