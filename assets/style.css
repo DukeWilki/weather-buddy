@@ -27,31 +27,9 @@
   border: none;
   margin: 5px;
   color: cornsilk;
-}
-
-.previousA {
   background-color: #2b039b;
 }
 
-.previousB {
-  background-color: #9b4703;
-}
-
-.previousC {
-  background-color: #9b0303;
-}
-
-.previousD {
-  background-color: #9b037a;
-}
-
-#resultsPanel {
-  background-color: burlywood;
-}
-
-#wildcardPanel {
-  background-color: aquamarine;
-}
 
 .wildcard {
     border: none;
@@ -78,4 +56,8 @@
 
 .area {
   padding-top: 10px;
+}
+
+.gb {
+  background-image: url(https://cdn.pixabay.com/photo/2014/11/21/03/24/landscape-540115_1280.jpg);
 }

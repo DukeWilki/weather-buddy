@@ -20,43 +20,26 @@
         </div>
         <div class="row" id="heading">
             <div class="col homedata" id="rightNow"></div>
-            <div class="col homedata" id="today"></div>
+            <div class="col homedata" id="todayDate"></div>
             <div class="col homedata" id="location">current loaction</div>
         </div>
         <div class="row">
           <div class="col-3" id="searchPanel">
             <form class="area">
-                <input
-                  type="text"
-                  name="cityName"
-                  id="cityName"
-                  placeholder="City name"
-                />
-                <button
-                  type="submit"
-                  class="searchCity"
-                  id="searchCity"
-                  onclick="searchCity(event)"
-                  disabled
-                >
-                  Search
-                </button>
+              <input type="text" placeholder="City name" class="inputvalue" id="cityName">
+              <button type="button" class="button" id="search" onclick="searchCityBtn();" value="Submit" disabled >Search</button>
               </form>
               <section class="area" id="previous">Previous Searches
-                <button type="button" class="previousCity previousA" id="">Click Me!</button>
-                <button type="button" class="previousCity previousB" id="">Click Me!</button>
-                <button type="button" class="previousCity previousC" id="">Click Me!</button>
-                <button type="button" class="previousCity previousD" id="">Click Me!</button>
-                <button type="button" class="previousCity previousC" id="">Click Me!</button>
-                <button type="button" class="previousCity previousB" id="">Click Me!</button>
-                <button type="button" class="previousCity previousA" id="">Click Me!</button>
-                <button type="button" class="previousCity previousB" id="">Click Me!</button>
-                <button type="button" class="previousCity previousC" id="">Click Me!</button>
-                <button type="button" class="previousCity previousD" id="">Click Me!</button>
               </section>
           </div>
           <div class="col-6" id="resultsPanel">
             Results panel
+            <section id="todayView"></section>
+            <h1 class="name"></h1>
+            <p class todayResult id="descToday"></p class todayResult>
+            <p class todayResult id="windToday"></p class todayResult>
+            <p class todayResult id="humToday"></p class todayResult>
+            <p class todayResult id="tempToday"></p class todayResult>
           </div>
           <div class="col-3" id="wildcardPanel">
             Wildcard panel
@@ -73,4 +56,4 @@
       <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
       <script src="script.js"></script>
       </body>
-</html>
+</html> 

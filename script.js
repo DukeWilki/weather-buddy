@@ -19,47 +19,111 @@
 //      -   centre: background image changes based on city (photo of country or current weather)
 // WONT HAVE:
 
+
+// var button = document.querySelector('.button'); 
+// var inputValue = document.querySelector('.inputValue'); 
+// var name = document.querySelector('.name')
+// var desc = document.querySelector('.desc')
+// var temp = document.querySelector('.temp')
+
+// button.addEventListener('click',function() {
+//     fetch ('https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/weather?q=' + inputValue +'&appid=fd40ccd7b40508e5a2e810c079536a1d')
+//     .then(response => response.json())
+//     .then(data => console.log)
+
+//     .catch(err => alert("invalid city"))
+// })
+
+
+
 // HEADER date time and current location
-const today = $("#today");
+const todayDate = $("#todayDate");
 const rightNow = $("#rightNow");
 const now = moment();
 const date = now.format("DD MMMM YYYY");
 const time = now.format("h:mm a");
-today.html(date);
+todayDate.html(date);
 rightNow.html(time);
 
 // LEFT PANEL
 // Search button listener
 // DOM ELEMENTS
-let cityName = document.getElementById("cityName");
-let cityArray = [];
-//run function to pull saved cities from local storage and fill array with it
-function init(){
-    let saved_cities = JSON.parse(localStorage.getItem("cities"));
+let currentArray = localStorage.getItem("cityArray");
+let cityArray = [currentArray];
 
-    if (saved_cities !== null){
-        citiyArray = saved_cities
-    }   
-}
-
-
+// console.log("hello");
 
 // LISTENER
 cityName.addEventListener("keyup", () => {
-    searchCity.disabled = !cityName.value;
+    search.disabled = !cityName.value;
 });
 
-// searchCity.addEventListener("click", () => {
-//     // localStorage.setItem(appointment.id, appointment.value);
-//     localStorage.setItem("City", cityName.value);
-//     // localStorage.setItem("CityList", cityArray.value);
-//     cityArray.push(cityName);
-//         //make sure cities array.length is never more than 8 
-//         if(cities.length > 8){
-//             cities.shift()
-//         }
-//     console.log(searchCity.value);
-//     console.log(cityArray.value);
-//     localStorage.setItem("cityArray", JSON.stringify(cityArray));
-// });
+function searchCityBtn(){
+    var city = document.getElementById("cityName").value;
+    localStorage.setItem("City", city);
+    cityArray.push(city);
+    localStorage.setItem("cityArray", cityArray);
+    console.log(cityArray);
+    console.log(city);
+    sendAPI()
+    renderButtons()
 
+
+
+// API DATA
+function sendAPI() {
+const apiUrl = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/weather?q="
+const apiKey = "&appid=fd40ccd7b40508e5a2e810c079536a1d"
+const unit = "&units=metric"
+const unitStymbol = "°C"
+let queryURL = apiUrl + city + unit + apiKey
+console.log(queryURL);
+  
+
+
+$.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+    console.log(response);
+    // Weather conditions for Today
+    var tempToday = response.main.temp;
+    var humToday = response.main.humidity;
+    var descToday = response.weather[0].main;
+    var windToday = response.wind.speed;
+    var name = response.sys.country;
+    var country = response.name;
+    $(".name").text(JSON.stringify(country + ", " + name));
+    $("#descToday").text(JSON.stringify("Currently: " + descToday));
+    $("#windToday").text(JSON.stringify("Wind Speed: " + windToday + "m/s"));
+    $("#humToday").text(JSON.stringify("Humidity: " + humToday));
+    $("#tempToday").text(JSON.stringify("Temperature: " + tempToday + unitStymbol));
+
+
+
+    if (country === "GB"){
+        resultsPanel.classList.add("GB");
+    }
+ });
+
+}
+
+// ADD TO PREVIOUS LIST
+const todayView = $("#todayView").val();
+function renderButtons() {
+    $("#previous").empty();
+    for (var i = 0; i < cityArray.length; i++) {
+        var a = $("<button>");
+        a.addClass("previousCity");
+        a.attr("data-name", cityArray[i]);
+        a.text(cityArray[i]);
+        $("#previous").append(a);
+        }
+};
+
+// SHOW TODAYS DATA
+
+
+
+
+};
