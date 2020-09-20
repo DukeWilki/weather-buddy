@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Dashboard</title>
+    <title>Weather2 Dashboard</title>
     <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
     crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="Assets/style.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Nanum+Pen+Script&family=Rancho&display=swap" rel="stylesheet">
 </head>
 <body>
     
-    <div class="container">
+    <div class="container" id="main">
         <div class="row" id="heading">
             <h1>Weather Buddy</h1> 
         </div>
@@ -27,26 +28,24 @@
           <div class="col-3" id="searchPanel">
             <form class="area">
               <input type="text" placeholder="City name" class="inputvalue" id="cityName">
-              <button type="button" class="button" id="search" onclick="searchCityBtn();" value="Submit" disabled >Search</button>
+              <button type="button" class="button" id="search" value="Submit" disabled >Search</button> <!-- onclick="searchCityBtn();"  -->
               </form>
               <section class="area" id="previous">Previous Searches
               </section>
           </div>
           <div class="col-6" id="resultsPanel">
-            Results panel
             <section id="todayView"></section>
-            <h1 class="name"></h1>
+            <h2 id="name"></h2>
             <p class todayResult id="descToday"></p class todayResult>
             <p class todayResult id="windToday"></p class todayResult>
             <p class todayResult id="humToday"></p class todayResult>
             <p class todayResult id="tempToday"></p class todayResult>
           </div>
           <div class="col-3" id="wildcardPanel">
-            Wildcard panel
             <button type="button" class="wildcard tropical" id="">Show me an island in the tropics!</button>
             <button type="button" class="wildcard mountain" id="">Show me somewhere in the mountains!</button>
             <button type="button" class="wildcard desert" id="">Show me somewhere in a desert!</button>
-            <button type="button" class="wildcard polar" id="">Show me somewhere near the poles!</button>
+            <button type="button" class="wildcard polar" id="">Show me somewhere freezing!</button>
           </div>
         </div>
       </div>
@@ -54,6 +53,6 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
       <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
-      <script src="script.js"></script>
+      <script src="script2.js"></script>
       </body>
 </html> 

@@ -1,10 +1,26 @@
+.colourpallete{
+  background-color: #E1EF7E;
+  background-color: #FFAA01;
+  background-color: #12B296;
+  background-color: #027A9F;
+}
+
+
 #heading {
-  background-color: chocolate;
+  background-color: #E1EF7E;
   justify-content: center;
+  font-family: 'Rancho', cursive;
+  color: #027A9F;
+  
+}
+
+h1{
+  font-family: 'Rancho', cursive;
 }
 
 .homedata {
   justify-content: center;
+  text-align: center;
 }
 
 #rightNow {
@@ -19,24 +35,36 @@
   text-align: right;
 }
 
-#searchPanel {
-  background-color: aquamarine;
+#searchPanel, #wildcardPanel {
+  background-color: #12B296;
+  text-align: center;
 }
 
 .previousCity {
   border: none;
   margin: 5px;
-  color: cornsilk;
-  background-color: #2b039b;
+  max-width: 200px;
+  padding-left: 30px;
+  padding-right: 30px;
+  color: #027A9F;
+  background-color: #E1EF7E;
 }
 
+#resultsPanel{
+  font-family: 'Rancho', cursive;
+}
+
+.todayresult {
+  margin: 5px;
+  font-size: x-large;
+}
 
 .wildcard {
     border: none;
     margin: 5px;
-    color: cornsilk;
+    color: #E1EF7E;
     height: 100px;
-    width: 250px;
+    width: 200px;
     /* -webkit-text-stroke: 1px blue; */
 }
 
@@ -58,6 +86,4 @@
   padding-top: 10px;
 }
 
-.gb {
-  background-image: url(https://cdn.pixabay.com/photo/2014/11/21/03/24/landscape-540115_1280.jpg);
-}
+

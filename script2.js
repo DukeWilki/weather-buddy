@@ -45,10 +45,8 @@ rightNow.html(time);
 // LEFT PANEL
 // Search button listener
 // DOM ELEMENTS
-let cityArray = [];
-currentArray = localStorage.getItem("cityArray");
-cityArray = currentArray;
-
+let currentArray = localStorage.getItem("cityArray");
+let cityArray = currentArray.split(',');
 
 // CREATE HISTORY BUTONS
 if (localStorage.getItem("cityArray") !== null) {
@@ -113,7 +111,7 @@ $.ajax({
       $("#descToday").text("Currently: " + descToday);
       $("#windToday").text("Wind Speed: " + windToday + "m/s");
       $("#humToday").text("Humidity: " + humToday);
-      $("#tempToday").text("Temperature: " + tempToday + unitStymbol);  
+      $("#tempToday").text("Temperature: " + tempToday + unitStymbol);
  });
 
 //  Four day forecast AJAX
