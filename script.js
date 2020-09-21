@@ -97,7 +97,7 @@ console.log(queryURLFuture);
 
 //  Current day forecast AJAX
 $.ajax({
-    url: queryURLToday,
+    url: queryURLToday, 
     method: "GET"
   }).then(function(response) {
     console.log(response);

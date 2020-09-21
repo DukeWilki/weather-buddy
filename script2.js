@@ -45,16 +45,19 @@ rightNow.html(time);
 // LEFT PANEL
 // Search button listener
 // DOM ELEMENTS
+let cityArray = [];
 let currentArray = localStorage.getItem("cityArray");
-let cityArray = currentArray.split(',');
+if (localStorage.getItem("cityArray") !== null) {
+cityArray = currentArray.split(',');
+}
 
 // CREATE HISTORY BUTONS
 if (localStorage.getItem("cityArray") !== null) {
     console.log("array exists");
-    renderButtons();
+    renderPreviousButtons();
   }
 
-function renderButtons() {
+function renderPreviousButtons() {
     $("#previous").empty();
     for (var i = 0; i < cityArray.length; i++) {
         var a = $("<button>");
@@ -66,30 +69,40 @@ function renderButtons() {
 };
 
 // LISTENER
+let cityName = document.getElementById("cityName")
+let futureSection = document.getElementById('future')
 cityName.addEventListener("keyup", () => {
     search.disabled = !cityName.value;
 });
 
-document.getElementById("search").addEventListener("click", function() {
-    console.log("Hello World");
-    cityName = document.getElementById("cityName").value;
-    localStorage.setItem("City", cityName);
-    cityArray.push([cityName]);
-    localStorage.setItem("cityArray", cityArray);
-    sendAPI()
-    console.log("Hello World");
-    renderButtons()
+    $("#search").on("click", function(event){
+      let cityName = document.getElementById("cityName").value;
+      console.log("New City: " + cityName);
+      cityArray.push([cityName]);
+      localStorage.setItem("cityArray", cityArray);
+      document.getElementById("cityName").value = "";
+      sendAPI(cityName);
+      renderPreviousButtons();
+  })
+
+  $(document).on("click", ".previousCity", function(event){
+        let cityName = $(this).text().trim();
+        console.log("Previous city clicked: " + cityName);
+        sendAPI(cityName);
   });
 
-function sendAPI() {
+function sendAPI(
+  city
+  ) {
 // API DATA
 const apiUrlToday = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/weather?q="
 const apiUrlFuture = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q="
 const apiKey = "&appid=fd40ccd7b40508e5a2e810c079536a1d"
 const unit = "&units=metric"
 const unitStymbol = "°C"
-let queryURLToday = apiUrlToday + cityName + unit + apiKey
-let queryURLFuture = apiUrlFuture + cityName + unit + apiKey
+// let name = cityName.value
+let queryURLToday = apiUrlToday + city + unit + apiKey
+let queryURLFuture = apiUrlFuture + city + unit + apiKey
 console.log(queryURLToday);
 console.log(queryURLFuture);
 
@@ -102,7 +115,7 @@ $.ajax({
     // Weather conditions for Today
       var tempToday = response.main.temp;
       var humToday = response.main.humidity;
-      var descToday = response.weather[0].main;
+      var descToday = response.weather[0].description;
       var windToday = response.wind.speed;
       var name = response.name;
       var country = response.sys.country;
@@ -110,7 +123,7 @@ $.ajax({
       $("#name").text(name + ", " + country);
       $("#descToday").text("Currently: " + descToday);
       $("#windToday").text("Wind Speed: " + windToday + "m/s");
-      $("#humToday").text("Humidity: " + humToday);
+      $("#humToday").text("Humidity: " + humToday+ "%");
       $("#tempToday").text("Temperature: " + tempToday + unitStymbol);
  });
 
@@ -120,6 +133,31 @@ $.ajax({
     method: "GET"
   }).then(function(response) {
     console.log(response);
+    
+    let results = response.list
+    let futureForcast = []
+    for (let index = 0; index < results.length; index++) {
+      const isEigth = ( (index + 1) % 8 ) === 0
+      if(isEigth){
+        futureForcast.push(results[index]);
+      }
+      
+    }
+    console.log(futureForcast);
+
+    for (let index = 0; index < futureForcast.length; index++) {
+      const weatherData = futureForcast[index];
+
+      console.log(weatherData);
+
+      // create the element
+      const card = $('<div>');
+      // 
+
+
+      // futureSection.appendChild(card)
+      
+    }
 
 })
 }
