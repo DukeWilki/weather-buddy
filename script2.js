@@ -127,7 +127,7 @@ $.ajax({
       $("#tempToday").text("Temperature: " + tempToday + unitStymbol);
  });
 
-//  Four day forecast AJAX
+//  Five day forecast AJAX
  $.ajax({
     url: queryURLFuture,
     method: "GET"
@@ -148,16 +148,56 @@ $.ajax({
     for (let index = 0; index < futureForcast.length; index++) {
       const weatherData = futureForcast[index];
 
-      console.log(weatherData);
+      console.log("data ", weatherData);
+
+      var tempFuture = weatherData['main'].temp;
+      console.log("temp ", tempFuture);
+      var humFuture = weatherData['main'].humidity;
+      console.log("humidity ", humFuture);
+      var descFuture = weatherData['weather']['0'].description;
+      console.log("description ", descFuture);
+      var windFuture = weatherData['wind'].speed;
+      console.log("wind ", windFuture);
+      var name = weatherData;
+      // var country = weatherData['main'].temp;
+      // console.log("data ", country);
+      var dateFuture = weatherData.dt_txt;
+      console.log("dt_txt ", dateFuture);
+
 
       // create the element
+      $("#future").empty();
       const card = $('<div>');
+
+
+      // Add data
+      card.addClass("futureCard");
+      card.text("City: " + name);
+      card.text("Date: " + name);
+      card.text("Forecast: " + name);
+      card.text("Temp: " + name);
+      card.text("City: " + name);
+
+      // card.text("Forecast: " + windFuture);
+
       // 
-
-
-      // futureSection.appendChild(card)
+      // $("#future").prepend(card);
+// debugger
+//       futureSection.appendChild(card)
       
     }
 
 })
 }
+
+
+// function renderPreviousButtons() {
+//   $("#previous").empty();
+//   for (var i = 0; i < cityArray.length; i++) {
+//       var a = $("<button>");
+//       a.addClass("previousCity");
+//       a.attr("data-name", cityArray[i]);
+//       a.text(cityArray[i]);
+//       $("#previous").prepend(a);
+//       }
+// };
