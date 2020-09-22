@@ -1,64 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather2 Dashboard</title>
     <link
-    rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="assets/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Nanum+Pen+Script&family=Rancho&display=swap" rel="stylesheet">
-</head>
-<body>
-    
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Nanum+Pen+Script&family=Rancho&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="container" id="main">
-        <div class="row" id="heading">
-            <h1>Weather Buddy</h1> 
+      <div class="row" id="heading">
+        <h1>Weather Buddy</h1>
+      </div>
+      <div class="row" id="heading">
+        <div class="col homedata" id="rightNow"></div>
+        <div class="col homedata" id="todayDate"></div>
+        <div class="col homedata" id="location">current loaction</div>
+      </div>
+      <div class="row">
+        <div class="col-3" id="searchPanel">
+          <form class="area">
+            <input
+              type="text"
+              placeholder="City name"
+              class="inputvalue"
+              id="cityName"
+            />
+            <button
+              type="button"
+              class="button"
+              id="search"
+              value="Submit"
+              disabled
+            >
+              Search
+            </button>
+            <!-- onclick="searchCityBtn();"  -->
+          </form>
+          <section class="area" id="previous">Previous Searches</section>
         </div>
-        <div class="row" id="heading">
-            <div class="col homedata" id="rightNow"></div>
-            <div class="col homedata" id="todayDate"></div>
-            <div class="col homedata" id="location">current loaction</div>
-        </div>
-        <div class="row">
-          <div class="col-3" id="searchPanel">
-            <form class="area">
-              <input type="text" placeholder="City name" class="inputvalue" id="cityName">
-              <button type="button" class="button" id="search" value="Submit" disabled >Search</button> <!-- onclick="searchCityBtn();"  -->
-              </form>
-              <section class="area" id="previous">Previous Searches
-              </section>
-          </div>
-          <div class="col-6" id="resultsPanel">
+        <div class="col-6" id="resultsPanel">
+          <div class="row">
             <section id="todayView">
-            <h2 id="name"></h2>
-            <p class todayResult id="descToday"></p class todayResult>
-            <p class todayResult id="windToday"></p class todayResult>
-            <p class todayResult id="humToday"></p class todayResult>
-            <p class todayResult id="tempToday"></p class todayResult>
-            <p class todayResult id="uvToday"></p class todayResult>
-
-            </section>
-            <section id="future">
-              
+              <h2 id="name"></h2>
+              <h4 id="date"></h4>
+              <img class todayResult id="iconToday"/>
+              <p class todayResult id="descToday"></p>
+              <p class todayResult id="windToday"></p>
+              <p class todayResult id="humToday"></p>
+              <p class todayResult id="tempToday"></p>
+              <p class todayResult id="uvToday""></p>
             </section>
           </div>
-          <div class="col-3" id="wildcardPanel">
-            <button type="button" class="wildcard tropical" id="">Show me an island in the tropics!</button>
-            <button type="button" class="wildcard mountain" id="">Show me somewhere in the mountains!</button>
-            <button type="button" class="wildcard desert" id="">Show me somewhere in a desert!</button>
-            <button type="button" class="wildcard polar" id="">Show me somewhere freezing!</button>
-          </div>
+            <section class="row" id="futureSection">
+              <!-- <div class="card">Tomorrow
+              <h3 id="date"></h3>
+              <p class futureResult id="iconFuture">icon</p>
+              <p class futureResult id="descFuture">desx</p>
+              <p class futureResult id="humFuture">hum</p>
+              <p class futureResult id="tempFuture">temp</p>
+            </div>
+              <div class="card">The next day
+              <h3 id="date"></h3>
+              <p class futureResult id="iconFuture"></p>
+              <p class futureResult id="descFuture"></p>
+              <p class futureResult id="humFuture"></p>
+              <p class futureResult id="tempFuture"></p>
+            </div>
+              <div class="card">The day after
+              <h3 id="date"></h3>
+              <p class futureResult id="iconFuture"></p>
+              <p class futureResult id="descFuture"></p>
+              <p class futureResult id="humFuture"></p>
+              <p class futureResult id="tempFuture"></p>
+            </div>
+              <div class="card">In four days
+              <h3 id="date"></h3>
+              <p class futureResult id="iconFuture"></p>
+              <p class futureResult id="descFuture"></p>
+              <p class futureResult id="humFuture"></p>
+              <p class futureResult id="tempFuture"></p>
+            </div>
+              <div class="card">Five days later
+              <h3 id="date"></h3>
+              <p class futureResult id="iconFuture"></p>
+              <p class futureResult id="descFuture"></p>
+              <p class futureResult id="humFuture"></p>
+              <p class futureResult id="tempFuture"></p>
+            </div> -->
+            </section>
+        </div>
+        <div class="col-3" id="wildcardPanel">
+          <button type="button" class="wildcard tropical" id="">
+            Show me an island in the tropics!
+          </button>
+          <button type="button" class="wildcard mountain" id="">
+            Show me somewhere in the mountains!
+          </button>
+          <button type="button" class="wildcard desert" id="">
+            Show me somewhere in a desert!
+          </button>
+          <button type="button" class="wildcard polar" id="">
+            Show me somewhere freezing!
+          </button>
         </div>
       </div>
-      <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-      <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
-      <script src="script2.js"></script>
-      </body>
-</html> 
+    </div>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment-timezone-with-data.min.js"></script>
+    <script src="script2.js"></script>
+  </body>
+</html>

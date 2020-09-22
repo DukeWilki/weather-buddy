@@ -82,14 +82,27 @@ h1{
     background-image: url(./polar.JPG)
 }
 
-.area {
-  padding-top: 10px;
+.low {
+  background-color: limegreen;
 }
 
-#future {
-  background-color: #027A9F;
+.moderate {
+  background-color: yellow;
 }
-.futureCard {
+
+.high {
+  background-color: orange;
+}
+
+.veryhigh {
+  background-color: red;
+}
+
+.extreme {
+  background-color: violet;
+}
+
+.card {
+  color: #027A9F;
   background-color: #E1EF7E;
 }
-
