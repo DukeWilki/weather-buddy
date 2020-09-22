@@ -103,6 +103,10 @@ h1{
 }
 
 .card {
+  display: flex;
   color: #027A9F;
   background-color: #E1EF7E;
+  margin: 2px;
+  min-width: 100px;
+  list-style: none;
 }

@@ -182,6 +182,9 @@ function sendAPI(city) {
         console.log("data ", weatherData);
 
         var dateFuture = weatherData.dt_txt;
+        // var dt_txt = weatherData.dt_txt;
+        // var dateFuture = dt_txt.format("DD MMMM YYYY");
+
         var iconFuture = weatherData["weather"]["0"].icon;
         var descFuture = weatherData["weather"]["0"].description;
         var tempFuture = weatherData["main"].temp;
@@ -197,6 +200,7 @@ function sendAPI(city) {
           // const card = $('<div>');
           const card = document.createElement('ul');
           card.classList.add("col-sm");
+          card.classList.add("card");
           // const cardItem = document.createElement('p');
           // card.innerHTML = cardItem;
           card.innerHTML = "<li>" + dateFuture + " UTC</li>";
@@ -204,7 +208,7 @@ function sendAPI(city) {
           card.innerHTML += "<li>" + tempFuture + unitStymbol + "</li>";
           card.innerHTML += "<li>" + humFuture + "% humidity</li>";
 
-          card.innerHTML += '<img src="https://openweathermap.org/img/wn/' + iconToday + '@2x.png"/>';
+          card.innerHTML += '<img src="https://openweathermap.org/img/wn/' + iconFuture + '@2x.png"/>';
 
           futureSection.appendChild(card)
           console.log("helo");
