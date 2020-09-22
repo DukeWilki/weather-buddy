@@ -9,18 +9,18 @@
 //      -   right sidebar: has wildcard options (e.g. search random tropical place)
 //      -   right sidebar: has a search by country option
 // WONT HAVE:
-// 
+//
 // When user searches
 // MUST HAVE:
 //      -   left sidebar: seacrhed city added to history
-//      -   centre: 5 day forecast of seacrhed city is shown 
+//      -   centre: 5 day forecast of seacrhed city is shown
 // SHOULD HAVE:
 // COULD HAVE:
 //      -   centre: background image changes based on city (photo of country or current weather)
 // WONT HAVE:
 
-// var button = document.querySelector('.button'); 
-// var inputValue = document.querySelector('.inputValue'); 
+// var button = document.querySelector('.button');
+// var inputValue = document.querySelector('.inputValue');
 // var name = document.querySelector('.name')
 // var desc = document.querySelector('.desc')
 // var temp = document.querySelector('.temp')
@@ -48,156 +48,188 @@ rightNow.html(time);
 let cityArray = [];
 let currentArray = localStorage.getItem("cityArray");
 if (localStorage.getItem("cityArray") !== null) {
-cityArray = currentArray.split(',');
+  cityArray = currentArray.split(",");
 }
 
 // CREATE HISTORY BUTONS
 if (localStorage.getItem("cityArray") !== null) {
-    console.log("array exists");
-    renderPreviousButtons();
-  }
+  console.log("array exists");
+  renderPreviousButtons();
+}
 
 function renderPreviousButtons() {
-    $("#previous").empty();
-    for (var i = 0; i < cityArray.length; i++) {
-        var a = $("<button>");
-        a.addClass("previousCity");
-        a.attr("data-name", cityArray[i]);
-        a.text(cityArray[i]);
-        $("#previous").prepend(a);
-        }
-};
+  $("#previous").empty();
+  for (var i = 0; i < cityArray.length; i++) {
+    var a = $("<button>");
+    a.addClass("previousCity");
+    a.attr("data-name", cityArray[i]);
+    a.text(cityArray[i]);
+    $("#previous").prepend(a);
+  }
+}
 
-// LISTENER
-let cityName = document.getElementById("cityName")
-let futureSection = document.getElementById('future')
+// LISTENERS AND CLICKS
+let cityName = document.getElementById("cityName");
+let futureSection = document.getElementById("future");
 cityName.addEventListener("keyup", () => {
-    search.disabled = !cityName.value;
+  search.disabled = !cityName.value;
 });
 
-    $("#search").on("click", function(event){
-      let cityName = document.getElementById("cityName").value;
-      console.log("New City: " + cityName);
-      cityArray.push([cityName]);
-      localStorage.setItem("cityArray", cityArray);
-      document.getElementById("cityName").value = "";
-      sendAPI(cityName);
-      renderPreviousButtons();
-  })
+// LISTENERS AND CLICKS: SEARCH FUNCTION
+$("#search").on("click", function (event) {
+  let cityName = document.getElementById("cityName").value;
+  console.log("New City: " + cityName);
+  cityArray.push([cityName]);
+  localStorage.setItem("cityArray", cityArray);
+  document.getElementById("cityName").value = "";
+  sendAPI(cityName);
+  renderPreviousButtons();
+});
 
-  $(document).on("click", ".previousCity", function(event){
-        let cityName = $(this).text().trim();
-        console.log("Previous city clicked: " + cityName);
-        sendAPI(cityName);
-  });
+// LISTENERS AND CLICKS: SELECT FROM PREVIOUS SEARCH
+$(document).on("click", ".previousCity", function (event) {
+  let cityName = $(this).text().trim();
+  console.log("Previous city clicked: " + cityName);
+  sendAPI(cityName);
+});
 
-function sendAPI(
-  city
-  ) {
-// API DATA
-const apiUrlToday = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/weather?q="
-const apiUrlFuture = "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q="
-const apiKey = "&appid=fd40ccd7b40508e5a2e810c079536a1d"
-const unit = "&units=metric"
-const unitStymbol = "°C"
-// let name = cityName.value
-let queryURLToday = apiUrlToday + city + unit + apiKey
-let queryURLFuture = apiUrlFuture + city + unit + apiKey
-console.log(queryURLToday);
-console.log(queryURLFuture);
+// API FUNCTION
+function sendAPI(city) {
+  // API DATA
+  const apiUrlToday =
+    "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/weather?q=";
 
-//  Current day forecast AJAX
-$.ajax({
+  const apiUrlFuture =
+    "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/forecast?q=";
+  const apiKey = "&appid=fd40ccd7b40508e5a2e810c079536a1d";
+  const unit = "&units=metric";
+  const unitStymbol = "°C";
+  // let name = cityName.value
+  let queryURLToday = apiUrlToday + city + unit + apiKey;
+
+  let queryURLFuture = apiUrlFuture + city + unit + apiKey;
+  console.log(queryURLToday);
+  console.log(queryURLFuture);
+
+  //  TODAY'S AJAX
+  $.ajax({
     url: queryURLToday,
-    method: "GET"
-  }).then(function(response) {
+    method: "GET",
+  }).then(function (response) {
     console.log(response);
     // Weather conditions for Today
-      var tempToday = response.main.temp;
-      var humToday = response.main.humidity;
-      var descToday = response.weather[0].description;
-      var windToday = response.wind.speed;
-      var name = response.name;
-      var country = response.sys.country;
-    //   INSERT DATA
+    var tempToday = response.main.temp;
+    var humToday = response.main.humidity;
+    var descToday = response.weather[0].description;
+    var windToday = response.wind.speed;
+    var name = response.name;
+    var country = response.sys.country;
+    var coord = "lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+    console.log(coord);
+    // if (country === "CO"){
+    //   document.getElementById("todayView").addClass("tropical");
+    }
+
+    const apiUrlUv =
+      "https://cors-anywhere.herokuapp.com/api.openweathermap.org/data/2.5/uvi/forecast?"; //lat={lat}&lon={lon}&cnt={cnt}&appid={API key}
+    let queryURLuv = apiUrlUv + coord + "&cnt=6" + apiKey;
+
+    // UV INDEX AJAX
+    $.ajax({
+      url: queryURLuv,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+      var uvToday = response[0].value;
+      console.log(uvToday);
+      //   INSERT TODAY'S DATA INTO DOCUMENT
       $("#name").text(name + ", " + country);
       $("#descToday").text("Currently: " + descToday);
       $("#windToday").text("Wind Speed: " + windToday + "m/s");
-      $("#humToday").text("Humidity: " + humToday+ "%");
+      $("#humToday").text("Humidity: " + humToday + "%");
       $("#tempToday").text("Temperature: " + tempToday + unitStymbol);
- });
+      $("#uvToday").text("UV index: " + uvToday);
 
-//  Five day forecast AJAX
- $.ajax({
-    url: queryURLFuture,
-    method: "GET"
-  }).then(function(response) {
-    console.log(response);
-    
-    let results = response.list
-    let futureForcast = []
-    for (let index = 0; index < results.length; index++) {
-      const isEigth = ( (index + 1) % 8 ) === 0
-      if(isEigth){
-        futureForcast.push(results[index]);
+    });
+
+    //  FIVE DAY AJAX
+    $.ajax({
+      url: queryURLFuture,
+      method: "GET",
+    }).then(function (response) {
+      console.log(response);
+      let futureResults = response.list;
+      let futureForcast = [];
+      for (let index = 0; index < futureResults.length; index++) {
+        const isEigth = (index + 1) % 8 === 0;
+        if (isEigth) {
+          futureForcast.push(futureResults[index]);
+        }
       }
-      
-    }
-    console.log(futureForcast);
+      console.log(futureForcast);
 
-    for (let index = 0; index < futureForcast.length; index++) {
-      const weatherData = futureForcast[index];
+      for (let index = 0; index < futureForcast.length; index++) {
+        const weatherData = futureForcast[index];
+        console.log("data ", weatherData);
 
-      console.log("data ", weatherData);
+        var tempFuture = weatherData["main"].temp;
+        var humFuture = weatherData["main"].humidity;
+        var descFuture = weatherData["weather"]["0"].description;
+        var windFuture = weatherData["wind"].speed;
+        var name = weatherData;
+        var dateFuture = weatherData.dt_txt;
+        console.log(
+          "temp: " + tempFuture,
+          "humidity: " + humFuture,
+          "description: " + descFuture,
+          "wind: " + windFuture,
+          "dt_txt: " + dateFuture
+        );
 
-      var tempFuture = weatherData['main'].temp;
-      console.log("temp ", tempFuture);
-      var humFuture = weatherData['main'].humidity;
-      console.log("humidity ", humFuture);
-      var descFuture = weatherData['weather']['0'].description;
-      console.log("description ", descFuture);
-      var windFuture = weatherData['wind'].speed;
-      console.log("wind ", windFuture);
-      var name = weatherData;
-      // var country = weatherData['main'].temp;
-      // console.log("data ", country);
-      var dateFuture = weatherData.dt_txt;
-      console.log("dt_txt ", dateFuture);
+        // create the element
+        // $("#future").empty();
+        // const card = $("<div>");
+        //   // card.addClass("futureCard");
+        //   // card.text("City: ");
+        // futureSection.appendChild(card);
 
+        $("#future").empty();
+        // const card = $("<div>");
+        //   // card.addClass("futureCard");
+        //   // card.text("City: ");
+        // futureSection.appendChild(card);
 
-      // create the element
-      $("#future").empty();
-      const card = $('<div>');
+        // const card = document.createElement('div'); // is a node
+        // card.innerHTML = 'test';
+        // $("#future").appendChild(card);
 
+        // const futureDetails = $('<p> Forcast: Wind: Humidity: Temperature: UV Index: </p>');
+        //   card.append(futureDetails);
+        //   console.log("booya")
 
-      // Add data
-      card.addClass("futureCard");
-      card.text("City: " + name);
-      card.text("Date: " + name);
-      card.text("Forecast: " + name);
-      card.text("Temp: " + name);
-      card.text("City: " + name);
+        // document.createElement("div");
+        // const card = $('<div class="futureCard">');
+        // const futureDetails = $('<p> Forcast: Wind: Humidity: ' + humFuture + ' Temperature: UV Index: </p>');
+        // card.append(futureDetails);
 
-      // card.text("Forecast: " + windFuture);
+        // card.addClass("futureCard");
+        // card.text("test");
 
-      // 
-      // $("#future").prepend(card);
-// debugger
-//       futureSection.appendChild(card)
-      
-    }
+        // // Add data
+        // card.addClass("futureCard");
+        // card.text("City: " + name);
+        // card.text("Date: " + name);
+        // card.text("Forecast: " + name);
+        // card.text("Temp: " + name);
+        // card.text("City: " + name);
 
-})
+        // card.text("Forecast: " + windFuture);
+
+        //
+        // $("#future").prepend(card);
+        // debugger
+        //
+      }
+    }); //Closing 5 day AJAX
+  }); // closing Todays AJAX
 }
-
-
-// function renderPreviousButtons() {
-//   $("#previous").empty();
-//   for (var i = 0; i < cityArray.length; i++) {
-//       var a = $("<button>");
-//       a.addClass("previousCity");
-//       a.attr("data-name", cityArray[i]);
-//       a.text(cityArray[i]);
-//       $("#previous").prepend(a);
-//       }
-// };
