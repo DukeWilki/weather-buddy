@@ -38,15 +38,23 @@ h1{
 #searchPanel, #wildcardPanel {
   background-color: #12B296;
   text-align: center;
+  min-width: 200px;
+  padding: 5px;
+}
+
+#previous {
+  margin-top: 15px;
 }
 
 .previousCity {
   border: none;
   margin: 5px;
+  /* padding-top: 15px */
   max-width: 200px;
   padding-left: 30px;
   padding-right: 30px;
   color: #027A9F;
+  height: 50px;
   background-color: #E1EF7E;
 }
 
@@ -64,23 +72,52 @@ h1{
     margin: 5px;
     color: #E1EF7E;
     height: 100px;
-    width: 200px;
-    /* -webkit-text-stroke: 1px blue; */
+    max-width: 200px;
+    min-width: 100px;
 }
 
 .tropical{
-    background-image: url(./island.JPG)
+    background-image: url(./island.JPG);
 }
 .mountain{
-    background-image: url(./mountain.JPG)
+    background-image: url(./mountain.JPG);
 }
 .desert{
-    background-image: url(./desert.JPG)
+    background-image: url(./desert.JPG);
 }
 
 .polar{
-    background-image: url(./polar.JPG)
+    background-image: url(./polar.JPG);
 }
+
+.thunder{
+  background-image: url(./thunder.jpg);
+}
+
+.thunder{
+  background-image: url(./thunder.jpg);
+}
+
+.sunny{
+  background-image: url(./sunny.jpg);
+}
+
+.stars{
+  background-image: url(./stars.jpg);
+}
+
+.cloudy{
+  background-image: url(./cloudy.jpg);
+}
+
+.rain{
+  background-image: url(./rain.jpg);
+}
+
+.snow{
+  background-image: url(./snow.jpg);
+}
+
 
 .low {
   background-color: limegreen;

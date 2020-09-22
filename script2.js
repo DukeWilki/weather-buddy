@@ -7,6 +7,7 @@ const time = now.format("h:mm a");
 todayDate.html(date);
 rightNow.html(time);
 
+
 // LEFT PANEL
 // DOM ELEMENTS
 let cityArray = [];
@@ -92,6 +93,7 @@ function sendAPI(city) {
     var name = response.name;
     var country = response.sys.country;
     var coord = "lat=" + response.coord.lat + "&lon=" + response.coord.lon;
+
     // var timezone = response.timezone
     // var timeDiff = timezone / 3600
     // console.log(timezone);
@@ -154,7 +156,30 @@ function sendAPI(city) {
       // ADD TO LOCALSTORAGE FOR NEXT LOGIN
       localStorage.setItem("lastSeach", name);
 
-      // div.innerHTML += '<img src="https://openweathermap.org/img/wn/' + iconToday + '@2x.png"/>';
+      // SET IMAGE
+      if (iconToday === "01d"){
+        $("#imageSection").addClass("sunny")
+      }
+      else if (iconToday === "01n" || "02n"){
+        $("#imageSection").addClass("stars")
+      }
+      else if (iconToday === "02d" || "03d" || "03n" || "04d" || "04n" ){
+        $("#imageSection").addClass("cloudy")
+      }
+      else if (iconToday === "09d" || "09n" || "10d" || "10n" ){
+        $("#imageSection").addClass("rain")
+      }
+      else if (iconToday === "13d" || "13n"){
+        $("#imageSection").addClass("snow")
+      }
+      else if (iconToday === "11d" || "11n" ){
+        $("#imageSection").addClass("thunder")
+      }
+      else {
+        $("#imageSection").addClass("mist")
+      }
+
+  
       
 
 
@@ -181,29 +206,25 @@ function sendAPI(city) {
         const weatherData = futureForcast[index];
         console.log("data ", weatherData);
 
-        var dateFuture = weatherData.dt_txt;
-        // var dt_txt = weatherData.dt_txt;
-        // var dateFuture = dt_txt.format("DD MMMM YYYY");
+        // var dateFuture = weatherData.dt_txt;
+        // let monthFuture = setMonth(month, dateFuture)
+        
+        // console.log(monthFuture)
+        var dt_txt = weatherData.dt_txt;
+  
 
         var iconFuture = weatherData["weather"]["0"].icon;
         var descFuture = weatherData["weather"]["0"].description;
         var tempFuture = weatherData["main"].temp;
         var humFuture = weatherData["main"].humidity;
         
-        // console.log(
-        //   "date: " + dateFuture,
-        //   "icon: "+ iconFuture,
-        //   "description: " + descFuture,
-        //   "temp: " + tempFuture,
-        //   "humidity: " + humFuture,
-
           // const card = $('<div>');
           const card = document.createElement('ul');
           card.classList.add("col-sm");
           card.classList.add("card");
           // const cardItem = document.createElement('p');
           // card.innerHTML = cardItem;
-          card.innerHTML = "<li>" + dateFuture + " UTC</li>";
+          card.innerHTML = "<li>" + dt_txt + " UTC</li>";
           card.innerHTML += "<li>" + descFuture +"</li>";
           card.innerHTML += "<li>" + tempFuture + unitStymbol + "</li>";
           card.innerHTML += "<li>" + humFuture + "% humidity</li>";
