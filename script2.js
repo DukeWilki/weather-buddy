@@ -16,6 +16,9 @@ if (localStorage.getItem("cityArray") !== null) {
   cityArray = currentArray.split(",");
 }
 
+
+
+
 // CREATE HISTORY BUTONS
 if (localStorage.getItem("cityArray") !== null) {
   console.log("array exists");
@@ -40,6 +43,23 @@ cityName.addEventListener("keyup", () => {
   search.disabled = !cityName.value;
 });
 
+// ON STARTUP
+let lastSeach = localStorage.getItem("lastSeach");
+console.log(lastSeach)
+if (localStorage.getItem("lastSeach") !== null) {
+//   console.log("lastSeach exists");
+  let cityName = lastSeach
+  sendAPI(cityName);
+} else {
+  let cityName = "Random"
+  sendAPI(cityName);
+}
+
+//   console.log(cityName);
+//   sendAPI(cityName);
+//   let cityName = "Random"
+
+
 // LISTENERS AND CLICKS: SEARCH FUNCTION
 $("#search").on("click", function (event) {
   let cityName = document.getElementById("cityName").value;
@@ -57,6 +77,42 @@ $(document).on("click", ".previousCity", function (event) {
   console.log("Previous city clicked: " + cityName);
   sendAPI(cityName);
 });
+
+
+// LISTENERS AND CLICKS: TROPICAL WILDCARD
+$(document).on("click", ".tropical", function (event) {
+const tropicsArray = ["Apia", "Dili", "Montego Bay", "Male", "Honiara", "Nadi", "Adamstown", "Cabo Verde", "Nassau", "Nauru"]
+let cityName = tropicsArray[Math.floor(Math.random() * tropicsArray.length)];
+console.log("Tropical Wildcard: " + cityName);
+sendAPI(cityName);
+});
+
+  // LISTENERS AND CLICKS: MOUNTAIN WILDCARD
+  $(document).on("click", ".mountain", function (event) {
+    const mountainArray = ["Katoomba", "Innsbruck", "Kathmandu", "Quito", "Lhasa", "Banff", "Aspen", "Arthur's Pass", "La Paz", "Vaduz"]
+    let cityName = mountainArray[Math.floor(Math.random() * mountainArray.length)];
+    console.log("Mountain Wildcard: " + cityName);
+    sendAPI(cityName);
+    });
+
+// LISTENERS AND CLICKS: DESERT WILDCARD
+$(document).on("click", ".desert", function (event) {
+  const desertArray = ["Tennant Creek", "Timbuktu", "Riyadh", "Khartoum", "Tucson", "Coober Pedy", "Muscat", "Amman", "Aleppo", "Niamey"]
+  let cityName = desertArray[Math.floor(Math.random() * desertArray.length)];
+  console.log("Desert Wildcard: " + cityName);
+  sendAPI(cityName);
+  });
+
+
+
+  // LISTENERS AND CLICKS: POLAR WILDCARD
+$(document).on("click", ".polar", function (event) {
+  const polarArray = ["McMurdo Station", "Port-aux-Français", "Nuuk", "Rovaniemi", "Noril'sk", "Longyearbyen", "Tromsø", "Taloyoak", "Murmansk", "Fairbanks"]
+  let cityName = polarArray[Math.floor(Math.random() * polarArray.length)];
+  console.log("Polar Wildcard: " + cityName);
+  sendAPI(cityName);
+  });
+
 
 // API FUNCTION
 function sendAPI(city) {
@@ -113,32 +169,22 @@ function sendAPI(city) {
       $("#uvToday").removeClass()
       if (uvToday <= 2){
         uvRisk = "low"
-        console.log("low")
-        console.log(uvRisk)
         $("#uvToday").addClass("low")
       }
       else if (uvToday <= 5){
         uvRisk = "moderate"
-        console.log("moderate")
-        console.log(uvRisk)
         $("#uvToday").addClass("moderate")
       }
       else if (uvToday <= 7){
         uvRisk = "high"
-        console.log("high")
-        console.log(uvRisk)
         $("#uvToday").addClass("high")
       }
       else if (uvToday <= 10){
         uvRisk = "very high"
-        console.log("very high")
-        console.log(uvRisk)
         $("#uvToday").addClass("veryhigh")
       }
       else {
         uvRisk = "extreme"
-        console.log("extreme")
-        console.log(uvRisk)
         $("#uvToday").addClass("extreme")
       }
       //   INSERT TODAY'S DATA INTO DOCUMENT
@@ -157,6 +203,13 @@ function sendAPI(city) {
       localStorage.setItem("lastSeach", name);
 
       // SET IMAGE
+      $("#imageSection").removeClass("sunny")
+      $("#imageSection").removeClass("stars")
+      $("#imageSection").removeClass("cloudy")
+      $("#imageSection").removeClass("rain")
+      $("#imageSection").removeClass("snow")
+      $("#imageSection").removeClass("thunder")
+      $("#imageSection").removeClass("mist")
       if (iconToday === "01d"){
         $("#imageSection").addClass("sunny")
       }
@@ -212,18 +265,22 @@ function sendAPI(city) {
         // console.log(monthFuture)
         var dt_txt = weatherData.dt_txt;
   
-
+        // var nameFuture = weatherData["city"].name;
         var iconFuture = weatherData["weather"]["0"].icon;
         var descFuture = weatherData["weather"]["0"].description;
         var tempFuture = weatherData["main"].temp;
         var humFuture = weatherData["main"].humidity;
         
           // const card = $('<div>');
+          // const forcastHeader = document.createElement('div');
+          // forcastHeader.text("card");
           const card = document.createElement('ul');
+          // card.title("TEST");
           card.classList.add("col-sm");
           card.classList.add("card");
           // const cardItem = document.createElement('p');
           // card.innerHTML = cardItem;
+          card.innerHTML = "<li>" + cityName + name + city + "</li>";
           card.innerHTML = "<li>" + dt_txt + " UTC</li>";
           card.innerHTML += "<li>" + descFuture +"</li>";
           card.innerHTML += "<li>" + tempFuture + unitStymbol + "</li>";
@@ -232,7 +289,7 @@ function sendAPI(city) {
           card.innerHTML += '<img src="https://openweathermap.org/img/wn/' + iconFuture + '@2x.png"/>';
 
           futureSection.appendChild(card)
-          console.log("helo");
+
 
     
 

@@ -24,7 +24,7 @@ h1{
 }
 
 #rightNow {
-  text-align: left;
+  text-align: center;
 }
 
 #today {
@@ -94,16 +94,16 @@ h1{
   background-image: url(./thunder.jpg);
 }
 
-.thunder{
-  background-image: url(./thunder.jpg);
-}
-
 .sunny{
   background-image: url(./sunny.jpg);
-}
+} 
 
 .stars{
   background-image: url(./stars.jpg);
+}
+
+.mist{
+  background-image: url(./mist.jpg);
 }
 
 .cloudy{

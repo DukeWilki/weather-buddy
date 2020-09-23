@@ -8,10 +8,12 @@ index.html script.js style.css
 </p>
 
 ## Design
-<p></p>
+<p>It is aimed at the traveller market, so the design has been kept casual and fun, so a handwritten style font has been used. Keeping the traveller in mind, photos have been used to display information and drive engagement in the app.</p>
 
 ## Usability
-<p></p>
+<p> On first time use, the user is presented with Random town, that is the town of Random in the United Kingdom. Users can seacrh using the the search bar on the top left, and by looking up their previous searches listed below.
+
+NB: Due to the high number of APIs to the same provider, the app can run slow and in testing the call failed at peak times. In the real world, this would be raised as a risk, but the performance has been left as is for the purpose of this assignment.</p>
 
 ## User Story
     
@@ -30,11 +32,11 @@ GIVEN a weather dashboard with form inputs
 WHEN I search for a city
 THEN I am presented with current and future conditions for that city and that city is added to the search history
 current: done
-future : 
+future : done
 
 WHEN I view current weather conditions for that city
 THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-current: done - need date! need icon!
+current: done
 
 WHEN I view the UV index
 THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
@@ -42,31 +44,52 @@ current: done
 
 WHEN I view future weather conditions for that city
 THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-future : 
+future : done - but old searches stick
 
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 current: done
-future : 
+future : done
 
 WHEN I open the weather dashboard
 THEN I am presented with the last searched city forecast
-current: 
-future : 
+current: done
+future : done
 
 ```
 
-The following image demonstrates the application functionality:
+## Screenshots
 
-![weather dashboard demo](./Assets/06-server-side-apis-homework-demo.png)
 
-## Review
 
-You are required to submit the following for review:
+### Link to the App
 
-* The URL of the deployed application.
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+### Licence
+Not applicable
 
-- - -
-© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+## Built With
+* [VScode](https://code.visualstudio.com/) - The editor of choice
+* [Terminal](https:///) - What would we do without our bash?
+
+## Authors
+* **LUKE WILKINSON**
+
+## Credits and links
+### UV Index
+who.int
+### API
+openweathermaps.com
+### Images
+thunder: accuweather.com
+sunny: tripadvisor.com
+stars: phys.org
+couldy: thetimesherald.com
+rainy: medium.com
+snow: mentalfloss.com
+mist: earth.com
+Polar image: medium.com
+Tropical image: lovetoknow.com
+Derert image: britanica.com
+Mountian image: britanica.com
+weather icons: openweathermaps.com
