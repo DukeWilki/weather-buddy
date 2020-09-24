@@ -63,7 +63,7 @@ future : done
 
 
 ### Link to the App
-
+https://dukewilki.github.io/weather-buddy
 
 ### Licence
 Not applicable
@@ -88,6 +88,11 @@ couldy: thetimesherald.com
 rainy: medium.com
 snow: mentalfloss.com
 mist: earth.com
+rainy night: unsplash.com
+cloudy night: pinterest.com.au
+snowy night: pinterest.com.au
+thunder day digital-photo-secrets.com
+binoculars: Shutterstock.com
 Polar image: medium.com
 Tropical image: lovetoknow.com
 Derert image: britanica.com

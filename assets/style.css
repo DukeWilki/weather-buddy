@@ -90,8 +90,12 @@ h1{
     background-image: url(./polar.JPG);
 }
 
-.thunder{
+.thundernight{
   background-image: url(./thunder.jpg);
+}
+
+.thunder{
+  background-image: url(./thunder-day.jpg);
 }
 
 .sunny{
@@ -110,13 +114,30 @@ h1{
   background-image: url(./cloudy.jpg);
 }
 
+.cloudynight{
+  background-image: url(./cloudy-night.jpg);
+}
+
 .rain{
   background-image: url(./rain.jpg);
+}
+
+.rainnight{
+  background-image: url(./rainy-night.jpg);
 }
 
 .snow{
   background-image: url(./snow.jpg);
 }
+
+.snownight {
+  background-image: url(./snow-night.jpg);
+}
+
+.checking{
+  background-image: url(./binoculars.JPG);
+}
+
 
 
 .low {

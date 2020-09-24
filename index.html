@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather2 Dashboard</title>
+    <title>Weather Buddy</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -24,7 +24,6 @@
       <div class="row" id="heading">
         <div class="col homedata" id="rightNow"></div>
         <div class="col homedata" id="todayDate"></div>
-        <!-- <div class="col homedata" id="location">current loaction</div> -->
       </div>
       <div class="row">
         <div class="col-3" id="searchPanel">
@@ -44,7 +43,6 @@
             >
               Search
             </button>
-            <!-- onclick="searchCityBtn();"  -->
           </form>
           <section class="area" id="previous">Previous Searches</section>
         </div>
@@ -65,7 +63,7 @@
             <section class="row" id="futureSection">
             </section>
         </div>
-        <div class="col-3" id="wildcardPanel">
+        <div class="col-3 futureRow" id="wildcardPanel">
           <button type="button" class="wildcard tropical" id="">
             Show me an island in the tropics!
           </button>
