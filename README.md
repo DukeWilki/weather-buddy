@@ -50,7 +50,8 @@ THEN I am presented with the last searched city forecast
 ```
 
 ## Screenshots
-
+![Screenshot 1](https://github.com/DukeWilki/weather-buddy/blob/master/assets/random.JPG)
+![Screenshot 2](https://github.com/DukeWilki/weather-buddy/blob/master/assets/berlin.JPG)
 
 
 ### Link to the App
