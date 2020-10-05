@@ -40,12 +40,31 @@ if (localStorage.getItem("lastSeach") !== null) {
   sendAPI(cityName);
 }
 
+// LISTENERS AND CLICKS: PREVENT ENTER BUTTON FROM CLEARING SEARCH DATA
+$(document).ready(function() {
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+
 // LISTENERS AND CLICKS: ENABLE SEARCH BUTTON
 let cityName = document.getElementById("cityName");
 let futureSection = document.getElementById("futureSection");
 cityName.addEventListener("keyup", () => {
   search.disabled = !cityName.value;
 });
+
+
+// var input = document.getElementById("cityName");
+// cityName.addEventListener("keyup", function(event) {
+//   if (event.keyCode === 13) {
+//    event.preventDefault();
+//    document.getElementById("search").click();
+//   }
+// });
 
 // LISTENERS AND CLICKS: SEARCH FUNCTION
 $("#search").on("click", function (event) {
@@ -197,6 +216,15 @@ $(document).on("click", ".polar", function (event) {
 });
 
 function checking() {
+  $("#name").text("");
+  $("#date").text("");
+  $("#date").text("");
+  $("#iconToday").attr("");
+  $("#descToday").text("");
+  $("#windToday").text("");
+  $("#humToday").text("");
+  $("#tempToday").text("");
+  $("#uvToday").text("");
   $("#imageSection").removeClass("sunny");
   $("#imageSection").removeClass("stars");
   $("#imageSection").removeClass("cloudy");
