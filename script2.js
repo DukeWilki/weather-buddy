@@ -82,6 +82,18 @@ $(document).on("click", ".tropical", function (event) {
     "Cabo Verde",
     "Nassau",
     "Nauru",
+
+    "Tabwakea Village",
+    "Niue",
+    "Arawa",
+    "Bali",
+    "Cebu",
+    "Port Blair",
+    "Hadibu",
+    "Lamu",
+    "Victoria, SC",
+    "Moroni",
+
   ];
   let cityName = tropicsArray[Math.floor(Math.random() * tropicsArray.length)];
   sendAPI(cityName);
@@ -102,6 +114,18 @@ $(document).on("click", ".mountain", function (event) {
     "Arthur's Pass",
     "La Paz",
     "Vaduz",
+
+    "La Rinconada, PE",
+    "Laya, BT",
+    "El Aguilar",
+    "Dingboche",
+    "Colquechaca",
+    "Saint Moritz",
+    "Stepantsminda",
+    "Almaty",
+    "Akhpradzor",
+    "Ifrane",
+
   ];
   let cityName =
     mountainArray[Math.floor(Math.random() * mountainArray.length)];
@@ -123,6 +147,18 @@ $(document).on("click", ".desert", function (event) {
     "Amman",
     "Aleppo",
     "Niamey",
+
+    "Kolmanskop",
+    "Pozo Almonte",
+    "Casablanca",
+    "Sharm El Sheikh",
+    "Hohhot",
+    "Bikaner",
+    "Almeria ",
+    "Kucha",
+    "Uyuni",
+    "Tottori",
+    
   ];
   let cityName = desertArray[Math.floor(Math.random() * desertArray.length)];
   sendAPI(cityName);
@@ -143,6 +179,18 @@ $(document).on("click", ".polar", function (event) {
     "Taloyoak",
     "Murmansk",
     "Fairbanks",
+
+    "Verkhoyansk",
+    "Inuvik",
+    "Harbin",
+    "Yakutsk",
+    "Tórshavn",
+    "Olonkinbyen",
+    "Isachsen",
+    "Grytviken",
+    "Kaiken",
+    "Punta Arenas",
+
   ];
   let cityName = polarArray[Math.floor(Math.random() * polarArray.length)];
   sendAPI(cityName);
