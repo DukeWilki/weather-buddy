@@ -57,15 +57,6 @@ cityName.addEventListener("keyup", () => {
   search.disabled = !cityName.value;
 });
 
-
-// var input = document.getElementById("cityName");
-// cityName.addEventListener("keyup", function(event) {
-//   if (event.keyCode === 13) {
-//    event.preventDefault();
-//    document.getElementById("search").click();
-//   }
-// });
-
 // LISTENERS AND CLICKS: SEARCH FUNCTION
 $("#search").on("click", function (event) {
   checking();
@@ -101,7 +92,6 @@ $(document).on("click", ".tropical", function (event) {
     "Cabo Verde",
     "Nassau",
     "Nauru",
-
     "Tabwakea Village",
     "Niue",
     "Arawa",
@@ -112,7 +102,6 @@ $(document).on("click", ".tropical", function (event) {
     "Lamu",
     "Victoria, SC",
     "Moroni",
-
   ];
   let cityName = tropicsArray[Math.floor(Math.random() * tropicsArray.length)];
   sendAPI(cityName);
@@ -133,7 +122,6 @@ $(document).on("click", ".mountain", function (event) {
     "Arthur's Pass",
     "La Paz",
     "Vaduz",
-
     "La Rinconada, PE",
     "Laya, BT",
     "El Aguilar",
@@ -144,7 +132,6 @@ $(document).on("click", ".mountain", function (event) {
     "Almaty",
     "Akhpradzor",
     "Ifrane",
-
   ];
   let cityName =
     mountainArray[Math.floor(Math.random() * mountainArray.length)];
@@ -166,7 +153,6 @@ $(document).on("click", ".desert", function (event) {
     "Amman",
     "Aleppo",
     "Niamey",
-
     "Kolmanskop",
     "Pozo Almonte",
     "Casablanca",
@@ -177,7 +163,6 @@ $(document).on("click", ".desert", function (event) {
     "Kucha",
     "Uyuni",
     "Tottori",
-    
   ];
   let cityName = desertArray[Math.floor(Math.random() * desertArray.length)];
   sendAPI(cityName);
@@ -198,7 +183,6 @@ $(document).on("click", ".polar", function (event) {
     "Taloyoak",
     "Murmansk",
     "Fairbanks",
-
     "Verkhoyansk",
     "Inuvik",
     "Harbin",
@@ -209,7 +193,6 @@ $(document).on("click", ".polar", function (event) {
     "Grytviken",
     "Kaiken",
     "Punta Arenas",
-
   ];
   let cityName = polarArray[Math.floor(Math.random() * polarArray.length)];
   sendAPI(cityName);
@@ -258,6 +241,15 @@ function sendAPI(city) {
   $.ajax({
     url: queryURLToday,
     method: "GET",
+    
+      //404
+      error: function (err) {
+        console.log("AJAX error in request: " + JSON.stringify(err, null, 2));
+        $("#name").text("We can't find that place!");
+        $("#date").text("Check the spelling and try again.");
+        $("#imageSection").addClass("lost");
+    }
+    
   }).then(function (response) {
     // Weather conditions for Today
     let tempToday = response.main.temp;

@@ -42,6 +42,14 @@ h1{
   padding: 5px;
 }
 
+.note {
+  font-family: 'Rancho', cursive;
+  margin-bottom: 5px; 
+  font-size: larger;
+  color: white;
+}
+
+
 #previous {
   margin-top: 15px;
 }
@@ -136,6 +144,10 @@ h1{
 
 .checking{
   background-image: url(./binoculars.JPG);
+}
+
+.lost{
+  background-image: url(./lost.jpg);
 }
 
 
