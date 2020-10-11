@@ -198,6 +198,38 @@ $(document).on("click", ".polar", function (event) {
   sendAPI(cityName);
 });
 
+
+// LISTENERS AND CLICKS: BIG CITIES
+$(document).on("click", ".big", function (event) {
+  checking();
+  $("#futureSection").empty();
+  const bigArray = [
+    "Tokyo",
+    "Delhi",
+    "Shanghai",
+    "Sao Paulo",
+    "Mexico City",
+    "Cairo",
+    "Dhaka",
+    "Mumbai",
+    "Beijing",
+    "Osaka",
+    "Karachi",
+    "Chongqing",
+    "Buenos Aires",
+    "Istanbul",
+    "Kolkata",
+    "Lagos",
+    "Manila",
+    "Tianjin",
+    "Rio de Janeiro",
+    "Guangzhou",
+  ];
+  let cityName = bigArray[Math.floor(Math.random() * bigArray.length)];
+  sendAPI(cityName);
+});
+
+
 function checking() {
   $("#name").text("");
   $("#date").text("");
@@ -208,6 +240,9 @@ function checking() {
   $("#humToday").text("");
   $("#tempToday").text("");
   $("#uvToday").text("");
+  $("#name").text("Let me check!");
+  $("#date").text("looking for clouds, sun, snow...");
+  $("#imageSection").removeClass("lost");
   $("#imageSection").removeClass("sunny");
   $("#imageSection").removeClass("stars");
   $("#imageSection").removeClass("cloudy");
@@ -305,6 +340,7 @@ function sendAPI(city) {
 
       // SET IMAGE
       $("#imageSection").removeClass("checking");
+      $("#imageSection").removeClass("lost");
       if (iconToday === "01d") {
         $("#imageSection").addClass("sunny");
       } else if (iconToday === "01n") {

@@ -95,8 +95,13 @@ h1{
 }
 
 .polar{
-    background-image: url(./polar.JPG);
+  background-image: url(./polar.JPG);
 }
+
+.big{
+  background-image: url(./bigcity.JPG);
+}
+
 
 .thundernight{
   background-image: url(./thunder.jpg);
