@@ -57,6 +57,18 @@ THEN I am presented with the last searched city forecast
 ### Link to the App
 https://dukewilki.github.io/weather-buddy
 
+### Updates
+* V2.0 - Enter key disabled as it was deleting data in input feild but not commencing search.
+* V2.0 - 404 error was sitting on the binocular image with previous search. Changed to show a lost image with an appropriate image in results panel.
+* V2.0 - Note to help people find the right city so people can find the right place for cities with common names (e.g. San Juan, Hamilton, Newport etc) 
+
+### Future Updates
+* Mobile responsiveness
+* Limit items in local storage
+* option to delete previous cities
+* Enter key commences search
+* input feilds for country/state 
+
 ### Licence
 Not applicable
 
@@ -73,20 +85,21 @@ who.int
 ### API
 openweathermaps.com
 ### Images
-thunder: accuweather.com
-sunny: tripadvisor.com
-stars: phys.org
-couldy: thetimesherald.com
-rainy: medium.com
-snow: mentalfloss.com
-mist: earth.com
-rainy night: unsplash.com
-cloudy night: pinterest.com.au
-snowy night: pinterest.com.au
-thunder day digital-photo-secrets.com
-binoculars: Shutterstock.com
-Polar image: medium.com
-Tropical image: lovetoknow.com
-Derert image: britanica.com
-Mountian image: britanica.com
-weather icons: openweathermaps.com
+* thunder: accuweather.com
+* sunny: tripadvisor.com
+* stars: phys.org
+* couldy: thetimesherald.com
+* rainy: medium.com
+* snow: mentalfloss.com
+* mist: earth.com
+* rainy night: unsplash.com
+* cloudy night: pinterest.com.au
+* snowy night: pinterest.com.au
+* thunder day digital-photo-secrets.com
+* binoculars: Shutterstock.com
+* Polar image: medium.com
+* Tropical image: lovetoknow.com
+* Derert image: britanica.com
+* Mountian image: britanica.com
+* weather icons: openweathermaps.com
+* lost in a boat: depositphotos.com
