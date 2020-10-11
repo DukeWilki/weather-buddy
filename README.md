@@ -70,7 +70,7 @@ https://dukewilki.github.io/weather-buddy
 * input feilds for country/state 
 
 ### Licence
-Not applicable
+MIT License | Copyright (c) 2020 Luke Wilkinson | https://github.com/DukeWilki/weather-buddy/blob/master/LICENSE
 
 ## Built With
 * [VScode](https://code.visualstudio.com/) - The editor of choice
