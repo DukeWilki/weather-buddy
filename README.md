@@ -49,13 +49,13 @@ THEN I am presented with the last searched city forecast
 
 ```
 
+### Link to the App
+https://dukewilki.github.io/weather-buddy
+
 ## Screenshots
 ![Screenshot 1](https://github.com/DukeWilki/weather-buddy/blob/master/assets/random.JPG)
 ![Screenshot 2](https://github.com/DukeWilki/weather-buddy/blob/master/assets/berlin.JPG)
 
-
-### Link to the App
-https://dukewilki.github.io/weather-buddy
 
 ### Updates
 * V2.0 - Enter key disabled as it was deleting data in input feild but not commencing search.
