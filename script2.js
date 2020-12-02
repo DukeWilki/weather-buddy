@@ -1,7 +1,7 @@
 // HEADER DATE AND TIME
 const todayDate = $("#todayDate");
 const rightNow = $("#rightNow");
-const now = moment();
+const now = moment(); 
 const date = now.format("DD MMMM YYYY");
 const time = now.format("h:mm a");
 todayDate.html(date);
